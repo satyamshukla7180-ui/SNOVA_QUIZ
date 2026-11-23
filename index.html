@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b0a16">
+  <title>SNOVA QUIZ — Test Your Knowledge</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{--bg:#0b0a16;--panel:#131222;--panel2:#19172b;--line:rgba(190,174,255,.13);--text:#f7f5ff;--muted:#9c98b2;--purple:#9a70ff;--pink:#d08bff;--green:#72e0b0}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}button,a{font:inherit}button{cursor:pointer}.glow{position:fixed;width:420px;height:420px;border-radius:50%;filter:blur(120px);opacity:.13;pointer-events:none;z-index:-1}.glow-one{background:#773cff;top:80px;left:-250px}.glow-two{background:#bd55ff;right:-300px;top:550px}.topbar{height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 max(5vw,22px);border-bottom:1px solid var(--line);background:rgba(11,10,22,.8);backdrop-filter:blur(18px);position:sticky;top:0;z-index:5}.brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;letter-spacing:-1px;color:var(--text);text-decoration:none}.brand-mark{color:var(--purple);margin-right:5px}.brand-light{font-weight:400;color:#aaa4c3;margin-left:4px;font-size:13px;letter-spacing:2px}.topbar nav{display:flex;gap:28px}.nav-link,.text-button{background:none;border:0;color:var(--muted);font-size:13px}.nav-link.active,.nav-link:hover,.text-button:hover{color:#c7adff}.header-actions{display:flex;align-items:center;gap:12px}.user-label{font-size:12px;color:var(--muted)}.container{width:min(1120px,90%);margin:auto;min-height:70vh}.page{display:none;padding:54px 0 75px}.page.active{display:block}.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;padding:65px 0 82px}.eyebrow{font-size:10px;letter-spacing:2px;font-weight:700;color:#b69aff}.eyebrow i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:8px;box-shadow:0 0 12px var(--green)}h1,h2,h3,p{margin-top:0}.hero h1,.page-heading h1{font:700 clamp(43px,6vw,70px)/1.05 'Space Grotesk',sans-serif;letter-spacing:-3px;margin:22px 0}.gradient-text{background:linear-gradient(100deg,#a68aff,#e0a1ff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-text,.page-heading p{color:var(--muted);line-height:1.8;max-width:490px;font-size:15px}.hero-actions{display:flex;gap:12px;margin-top:28px}.btn{border:1px solid transparent;border-radius:10px;padding:13px 19px;font-weight:700;font-size:13px;transition:.2s}.btn-primary{background:linear-gradient(110deg,#895dff,#b276ff);color:white;box-shadow:0 8px 28px rgba(137,93,255,.2)}.btn-primary:hover{transform:translateY(-2px);filter:brightness(1.1)}.btn-ghost,.btn-outline{background:rgba(255,255,255,.025);border-color:var(--line);color:#ddd8ef}.btn-ghost:hover,.btn-outline:hover{border-color:#9c79ed}.btn-small{padding:9px 13px;font-size:11px}.hero-stats{display:flex;gap:35px;margin-top:48px}.hero-stats div{display:flex;flex-direction:column;gap:4px}.hero-stats strong{font:700 20px 'Space Grotesk'}.hero-stats span{font-size:11px;color:var(--muted)}.hero-art{height:390px;display:grid;place-items:center;position:relative}.orbit{position:absolute;border:1px solid rgba(168,130,255,.16);border-radius:50%;transform:rotate(-25deg)}.orbit-a{width:390px;height:250px}.orbit-b{width:330px;height:360px;transform:rotate(48deg)}.quiz-preview{width:min(320px,90%);padding:24px;border:1px solid rgba(194,165,255,.25);border-radius:20px;background:linear-gradient(145deg,rgba(34,29,57,.96),rgba(17,16,31,.96));box-shadow:0 25px 80px rgba(0,0,0,.35);position:relative;z-index:1}.preview-top{font-size:9px;letter-spacing:1.4px;color:#b7a9d7}.live-dot{display:inline-block;width:6px;height:6px;background:var(--green);border-radius:50%;margin-right:5px}.preview-count{float:right;color:var(--muted)}.preview-icon{font-size:34px;color:#b78eff;margin:28px 0 8px}.quiz-preview h3{font:600 24px/1.2 'Space Grotesk';margin-bottom:20px}.preview-line{height:3px;background:linear-gradient(90deg,var(--purple) 30%,#353047 30%);border-radius:5px;margin-bottom:17px}.preview-option{padding:10px;border:1px solid var(--line);border-radius:8px;margin-top:8px;font-size:10px;color:#bca4ff}.preview-option span{color:#e3def0;margin-left:8px}.floating-chip{position:absolute;background:#211b36;border:1px solid var(--line);padding:10px 13px;border-radius:10px;font-size:10px;color:#d9caff;z-index:2;box-shadow:0 10px 30px #0005}.chip-one{top:42px;right:0}.chip-two{bottom:50px;left:0}.section-heading{display:flex;align-items:end;justify-content:space-between;margin-bottom:22px}.section-heading h2,.history-panel h2,.review-panel h2{font:600 26px 'Space Grotesk';margin:8px 0 0}.category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.category-card{background:linear-gradient(145deg,#171529,#11101e);border:1px solid var(--line);border-radius:15px;padding:20px;text-align:left;color:var(--text);min-height:150px;transition:.2s}.category-card:hover{transform:translateY(-4px);border-color:rgba(174,137,255,.55);background:#1b1830}.category-icon{width:42px;height:42px;border-radius:12px;background:rgba(155,115,255,.13);display:grid;place-items:center;font-size:21px;margin-bottom:17px}.category-card strong{display:block;font:600 15px 'Space Grotesk';margin-bottom:6px}.category-card small{color:var(--muted);font-size:11px}.page-heading{margin:22px 0 35px}.page-heading h1{font-size:52px;margin:14px 0}.bottom-callout{margin:65px 0 10px;padding:30px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(100deg,#19142b,#171324);display:flex;justify-content:space-between;align-items:center}.bottom-callout h2{font:600 24px 'Space Grotesk';margin:10px 0 5px}.bottom-callout p{font-size:12px;color:var(--muted);margin:0}.quiz-shell{max-width:760px;margin:15px auto;padding:32px;border:1px solid var(--line);border-radius:20px;background:rgba(19,18,34,.9)}.quiz-topline{display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:1px;color:#b9a4f4}.timer{font-size:13px;color:#f2eaff}.progress-track{height:5px;background:#2b273d;border-radius:10px;margin:25px 0 32px;overflow:hidden}.progress-track div{height:100%;width:10%;background:linear-gradient(90deg,#8c61ff,#d18bff);transition:.3s}.question-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;letter-spacing:1.4px}.quiz-shell h2{font:600 26px/1.4 'Space Grotesk';margin:18px 0 25px}.answer-list{display:grid;gap:11px}.answer-option{display:flex;align-items:center;gap:13px;padding:15px;border:1px solid var(--line);border-radius:10px;background:#171526;color:#e8e4f2;text-align:left}.answer-option:hover{border-color:#9871ee}.answer-option.selected{border-color:#a57cff;background:rgba(144,101,255,.14)}.option-letter{width:27px;height:27px;display:grid;place-items:center;border-radius:7px;background:#29243d;color:#c6adff;font-weight:700;font-size:11px}.quiz-footer{display:flex;justify-content:space-between;align-items:center;margin-top:28px;color:var(--muted);font-size:11px}.result-card{text-align:center;max-width:600px;margin:10px auto 35px;padding:35px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#19152b,#11101d)}.result-icon{font-size:35px;color:#bd9aff}.result-card h1{font:700 38px 'Space Grotesk';margin:10px 0}.result-card p{color:var(--muted);font-size:13px}.score-ring{width:145px;height:145px;margin:25px auto;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at center,#171329 57%,transparent 59%),conic-gradient(#ad80ff var(--score,0%),#332d48 0)}.score-ring strong{font:700 36px 'Space Grotesk'}.score-ring span{color:var(--muted);font-size:13px}.result-stats,.dashboard-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.result-stats div,.stat-card{padding:15px;background:#211d33;border-radius:10px;display:flex;flex-direction:column;gap:5px}.result-stats strong,.stat-card strong{font:700 23px 'Space Grotesk'}.result-stats span,.stat-card span{font-size:11px;color:var(--muted)}.result-actions{display:flex;justify-content:center;gap:10px;margin-top:25px}.review-panel,.history-panel,.leaderboard-panel{max-width:760px;margin:25px auto;padding:25px;border:1px solid var(--line);border-radius:16px;background:#131222}.review-item{padding:16px 0;border-bottom:1px solid var(--line)}.review-item:last-child{border:0}.review-item strong{font-size:13px}.review-item p{font-size:12px;color:var(--muted);margin:7px 0 0}.good{color:var(--green)}.bad{color:#ff929e}.dashboard-stats{margin:25px 0}.stat-card{padding:22px}.history-item,.leader-row{display:grid;grid-template-columns:1fr auto;gap:12px;padding:15px 5px;border-bottom:1px solid var(--line);font-size:13px}.history-item:last-child,.leader-row:last-child{border:0}.history-item span,.history-item small{color:var(--muted)}.leader-row{grid-template-columns:70px 1fr 70px}.leader-row strong{text-align:right}.leader-head{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}.rank{color:#c5a6ff;font-weight:700}.note{font-size:11px;color:var(--muted);text-align:center;margin-top:20px}.modal{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:20px}.hidden{display:none!important}.modal-backdrop{position:absolute;inset:0;background:#05040bd9;backdrop-filter:blur(8px)}.modal-card{width:min(420px,100%);padding:30px;background:#171529;border:1px solid var(--line);border-radius:18px;position:relative;z-index:1;box-shadow:0 30px 100px #0009}.modal-close{position:absolute;right:17px;top:12px;background:none;border:0;color:var(--muted);font-size:25px}.modal-brand{font:700 13px 'Space Grotesk';color:#c2a6ff;letter-spacing:1px}.modal-card h2{font:600 27px 'Space Grotesk';margin:15px 0 5px}.modal-card>p{color:var(--muted);font-size:12px}.auth-tabs{display:grid;grid-template-columns:1fr 1fr;background:#0e0d19;border-radius:9px;padding:4px;margin:22px 0}.auth-tab{border:0;border-radius:7px;padding:10px;background:none;color:var(--muted);font-size:12px}.auth-tab.active{background:#30264b;color:white}.modal-card label{display:block;font-size:11px;color:#c9c3dc;margin:14px 0}.modal-card input{display:block;width:100%;padding:13px;margin-top:7px;background:#0f0e1b;border:1px solid var(--line);border-radius:8px;color:white;outline:none}.modal-card input:focus{border-color:#9871ee}.full-width{width:100%;margin-top:8px}.auth-message{min-height:28px;margin:15px 0 0!important;text-align:center;font-size:11px!important}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);padding:12px 18px;background:#29213f;border:1px solid #604c8b;border-radius:9px;color:#fff;font-size:12px;opacity:0;pointer-events:none;transition:.25s;z-index:30}.toast.show{opacity:1;transform:translate(-50%,0)}footer{display:flex;justify-content:space-between;align-items:center;padding:25px 5vw;border-top:1px solid var(--line);color:var(--muted);font-size:11px}.empty-state{padding:25px;text-align:center;color:var(--muted);font-size:12px}
+@media(max-width:800px){.topbar{padding:0 5%;height:68px}.topbar nav{gap:12px}.nav-link{font-size:11px}.user-label{display:none}.hero{grid-template-columns:1fr;padding:45px 0 55px;gap:5px}.hero-art{height:330px}.category-grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:55px}.chip-one{right:4%}.chip-two{left:3%}.page{padding-top:35px}.bottom-callout{gap:15px}.bottom-callout h2{font-size:20px}}
+@media(max-width:520px){.brand{font-size:19px}.brand-light{font-size:10px}.topbar nav{gap:8px}.nav-link{font-size:10px;padding:5px 0}.header-actions{gap:5px}.btn-small{padding:8px;font-size:9px}.hero h1{font-size:48px}.hero-text{font-size:13px}.hero-stats{gap:23px}.hero-art{height:300px}.orbit-a{width:300px}.orbit-b{width:270px}.quiz-preview{width:275px;padding:19px}.floating-chip{font-size:9px}.category-card{padding:15px;min-height:140px}.page-heading h1{font-size:40px}.quiz-shell{padding:20px 16px}.quiz-shell h2{font-size:21px}.quiz-topline{font-size:8px}.quiz-footer{gap:10px}.result-card{padding:25px 17px}.result-stats{gap:6px}.result-stats div{padding:11px 5px}.result-stats strong{font-size:19px}.result-actions{flex-direction:column}.bottom-callout{align-items:flex-start;flex-direction:column}.dashboard-stats{gap:7px}.stat-card{padding:13px 9px}.stat-card strong{font-size:20px}footer{gap:10px}.modal-card{padding:24px}}
+
+/* ---- Animations ---- */
+@keyframes pageIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes slideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:none}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pop{0%{transform:scale(.8);opacity:0}60%{transform:scale(1.06)}100%{transform:scale(1);opacity:1}}
+.page.active{animation:pageIn .5s ease both}
+.category-card{animation:rise .55s ease both;transition:transform .25s,box-shadow .25s,border-color .25s}
+.category-card:nth-child(2){animation-delay:.06s}.category-card:nth-child(3){animation-delay:.12s}.category-card:nth-child(4){animation-delay:.18s}.category-card:nth-child(5){animation-delay:.24s}.category-card:nth-child(6){animation-delay:.3s}.category-card:nth-child(7){animation-delay:.36s}.category-card:nth-child(8){animation-delay:.42s}
+.category-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 14px 34px rgba(173,128,255,.28)}
+.category-icon{display:inline-block;transition:transform .3s}.category-card:hover .category-icon{transform:scale(1.25) rotate(-8deg)}
+.answer-option{animation:slideIn .4s ease both;transition:transform .2s,background .2s,border-color .2s}
+.answer-option:nth-child(2){animation-delay:.07s}.answer-option:nth-child(3){animation-delay:.14s}.answer-option:nth-child(4){animation-delay:.21s}
+.answer-option:hover{transform:translateX(6px)}.answer-option.selected{animation:pop .3s ease both}
+#question-text{animation:pageIn .4s ease both}
+#progress-fill{transition:width .5s ease}
+.btn{transition:transform .2s,box-shadow .2s,opacity .2s}.btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 24px rgba(173,128,255,.35)}.btn:active:not(:disabled){transform:scale(.96)}
+.brand-mark{display:inline-block;animation:spin 8s linear infinite}
+.glow{animation:floaty 7s ease-in-out infinite}.glow-two{animation-delay:-3s}
+.floating-chip{animation:floaty 4s ease-in-out infinite}.chip-two{animation-delay:-2s}
+.quiz-preview{animation:floaty 6s ease-in-out infinite}
+.modal-card{animation:pop .35s ease both}
+.result-card{animation:pop .6s ease both}.review-item{animation:rise .5s ease both}
+.leader-row{animation:slideIn .45s ease both}.history-item{animation:rise .4s ease both}
+.toast{transition:transform .35s,opacity .35s}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+</style>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+      </head>
+<body>
+  <div class="glow glow-one"></div><div class="glow glow-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#" data-page="home"><span class="brand-mark">✦</span> SNOVA<span class="brand-light">QUIZ</span></a>
+    <nav>
+      <button class="nav-link active" data-page="home">Home</button>
+      <button class="nav-link" data-page="categories">Quizzes</button>
+      <button class="nav-link" data-page="leaderboard">Leaderboard</button>
+    </nav>
+    <div class="header-actions">
+      <span id="user-label" class="user-label">Guest mode</span>
+      <button id="auth-open" class="btn btn-small btn-outline">Login / Sign up</button>
+      <button id="logout-btn" class="btn btn-small btn-outline hidden">Logout</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="home-page" class="page active">
+      <div class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow"><i></i> LEARN SOMETHING NEW EVERY DAY</span>
+          <h1>Challenge your<br><span class="gradient-text">knowledge.</span></h1>
+          <p class="hero-text">Play quick multiple-choice quizzes, discover what you know, and build your knowledge one question at a time.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" data-page="categories">Explore quizzes <span>↗</span></button>
+            <button class="btn btn-ghost" data-page="dashboard">My dashboard</button>
+          </div>
+          <div class="hero-stats">
+            <div><strong>8</strong><span>Categories</span></div>
+            <div><strong>MCQ</strong><span>Quiz format</span></div>
+            <div><strong>Free</strong><span>Always</span></div>
+          </div>
+        </div>
+        <div class="hero-art">
+          <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+          <div class="quiz-preview">
+            <div class="preview-top"><span class="live-dot"></span> QUICK CHALLENGE <span class="preview-count">01 / 10</span></div>
+            <div class="preview-icon">✦</div>
+            <h3>Ready to test<br>your knowledge?</h3>
+            <div class="preview-line"></div>
+            <div class="preview-option">A <span>Start with a topic</span></div>
+            <div class="preview-option">B <span>Beat your best score</span></div>
+            <div class="preview-option">C <span>Learn something new</span></div>
+          </div>
+          <div class="floating-chip chip-one">✧ Daily learning</div>
+          <div class="floating-chip chip-two">+ Knowledge points</div>
+        </div>
+      </div>
+      <div class="section-heading"><div><span class="eyebrow">PICK YOUR INTEREST</span><h2>Explore categories</h2></div><button class="text-button" data-page="categories">View all →</button></div>
+      <div id="home-categories" class="category-grid"></div>
+      <div class="bottom-callout"><div><span class="eyebrow">YOUR NEXT WIN STARTS HERE</span><h2>Small quiz. Big progress.</h2><p>Choose a topic and give it your best shot.</p></div><button class="btn btn-primary" data-page="categories">Start a quiz →</button></div>
+    </section>
+
+    <section id="categories-page" class="page">
+      <div class="page-heading"><span class="eyebrow">FIND YOUR NEXT CHALLENGE</span><h1>Quiz <span class="gradient-text">categories</span></h1><p>Choose a subject. Each quiz has 10 multiple-choice questions.</p></div>
+      <div id="all-categories" class="category-grid"></div>
+    </section>
+
+    <section id="quiz-page" class="page">
+      <div class="quiz-shell">
+        <div class="quiz-topline"><button id="quit-quiz" class="text-button">← Exit quiz</button><span id="quiz-category-label">GENERAL KNOWLEDGE</span><span class="timer">◷ <b id="timer">05:00</b></span></div>
+        <div class="progress-track"><div id="progress-fill"></div></div>
+        <div class="question-meta"><span id="question-number">QUESTION 1 OF 10</span><span id="question-points">10 POINTS</span></div>
+        <h2 id="question-text">Question appears here</h2>
+        <div id="answer-options" class="answer-list"></div>
+        <div class="quiz-footer"><span id="answered-count">Choose one answer</span><button id="next-question" class="btn btn-primary" disabled>Next question →</button></div>
+      </div>
+    </section>
+
+    <section id="result-page" class="page">
+      <div class="result-card">
+        <div class="result-icon">✦</div><span class="eyebrow">QUIZ COMPLETED</span>
+        <h1 id="result-title">Well played!</h1>
+        <p id="result-subtitle">Here is how you did.</p>
+        <div class="score-ring"><div><strong id="result-score">0</strong><span> / 100</span></div></div>
+        <div class="result-stats"><div><strong id="correct-count">0</strong><span>Correct</span></div><div><strong id="wrong-count">0</strong><span>Incorrect</span></div><div><strong id="accuracy">0%</strong><span>Accuracy</span></div></div>
+        <div class="result-actions"><button class="btn btn-primary" id="retry-quiz">Try again</button><button class="btn btn-outline" data-page="categories">Other quizzes</button></div>
+      </div>
+      <div class="review-panel"><h2>Answer review</h2><div id="answer-review"></div></div>
+    </section>
+
+    <section id="dashboard-page" class="page">
+      <div class="page-heading"><span class="eyebrow">YOUR LEARNING SPACE</span><h1>My <span class="gradient-text">dashboard</span></h1><p>Your quiz activity on this device.</p></div>
+      <div class="dashboard-stats"><div class="stat-card"><span>Total quizzes</span><strong id="dash-quizzes">0</strong></div><div class="stat-card"><span>Total points</span><strong id="dash-points">0</strong></div><div class="stat-card"><span>Average accuracy</span><strong id="dash-accuracy">0%</strong></div></div>
+      <div class="history-panel"><h2>Recent quiz history</h2><div id="history-list" class="history-list"></div></div>
+      <p class="note">Guest activity is saved only in this browser. Sign in with Supabase after setup to enable account-based features.</p>
+    </section>
+
+    <section id="leaderboard-page" class="page">
+      <div class="page-heading"><span class="eyebrow">A LITTLE FRIENDLY COMPETITION</span><h1>Top <span class="gradient-text">players</span></h1><p>Top players by total points. Log in to join the ranking.</p></div>
+      <div class="leaderboard-panel" id="leader-list"><div class="leader-row leader-head"><span>Rank</span><span>Player</span><span>Points</span></div><div class="leader-row"><span class="rank">01</span><span>NovaStar</span><strong>920</strong></div><div class="leader-row"><span class="rank">02</span><span>QuizMaster</span><strong>860</strong></div><div class="leader-row"><span class="rank">03</span><span>BrainWave</span><strong>790</strong></div><div class="leader-row"><span class="rank">04</span><span>KnowledgeHub</span><strong>710</strong></div></div>
+    </section>
+  </main>
+
+  <div id="auth-modal" class="modal hidden">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <button class="modal-close" data-close-modal aria-label="Close">×</button>
+      <div class="modal-brand">✦ SNOVA QUIZ</div>
+      <h2 id="auth-title">Welcome back</h2><p id="auth-description">Log in to keep your progress connected.</p>
+      <div class="auth-tabs"><button id="login-tab" class="auth-tab active">Login</button><button id="signup-tab" class="auth-tab">Create account</button></div>
+      <form id="auth-form"><label id="username-wrap" class="hidden">Username<input id="auth-username" type="text" maxlength="30" placeholder="Shown on leaderboard"></label><label>Email address<input id="auth-email" type="email" placeholder="you@example.com" required></label><label>Password<input id="auth-password" type="password" placeholder="At least 6 characters" minlength="6" required></label><button id="auth-submit" class="btn btn-primary full-width" type="submit">Login</button></form>
+      <p id="auth-message" class="auth-message">You can try the quiz as a guest without signing in.</p>
+    </div>
+  </div>
+  <div id="toast" class="toast"></div>
+  <footer><a class="brand" href="#" data-page="home"><span class="brand-mark">✦</span> SNOVA<span class="brand-light">QUIZ</span></a><span>Learn. Play. Grow. <span id="year"></span></span></footer>
+<script>
+// Supabase setup (Project URL + Publishable key are safe for browser code).
+// Never put a service_role / sb_secret key in browser code.
+window.SNOVA_CONFIG = {
+  supabaseUrl: "https://lkqvppftmpzmcjzdmwde.supabase.co",
+  supabaseAnonKey: "sb_publishable_cu3ac3XMPj4l4kUKvHqScA_JCyeaBzQ"
+};
+
+</script>
+<script>
+// Supabase authentication is optional for local preview.
+// Guest quiz mode works without configuring Supabase.
+window.snovaAuth = {
+  client: null,
+  user: null,
+  ready: false,
+  async init() {
+    const cfg = window.SNOVA_CONFIG || {};
+    if (!cfg.supabaseUrl || !cfg.supabaseAnonKey || !window.supabase) return;
+    try {
+      this.client = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey);
+      const { data } = await this.client.auth.getSession();
+      this.user = data.session?.user || null;
+      this.ready = true;
+      this.client.auth.onAuthStateChange((_event, session) => {
+        this.user = session?.user || null;
+        window.dispatchEvent(new CustomEvent("snova-auth-change"));
+      });
+    } catch (error) {
+      console.error("Supabase initialization failed:", error);
+    }
+  },
+  async signUp(email, password, username) {
+    if (!this.client) throw new Error("Supabase setup is missing. Guest mode is available.");
+    const { data, error } = await this.client.auth.signUp({ email, password, options: { data: { username: username || email.split("@")[0] } } });
+    if (error) throw error;
+    this.user = data.user;
+    return data;
+  },
+  async signIn(email, password) {
+    if (!this.client) throw new Error("Supabase setup is missing. Guest mode is available.");
+    const { data, error } = await this.client.auth.signInWithPassword({ email, password });
+    if (error) throw error;
+    this.user = data.user;
+    return data;
+  },
+  async signOut() {
+    if (!this.client) { this.user = null; return; }
+    const { error } = await this.client.auth.signOut();
+    if (error) throw error;
+    this.user = null;
+  }
+};
+window.addEventListener("DOMContentLoaded", () => window.snovaAuth.init());
+
+</script>
+<script>
+const categories = [
+ {id:"gk",name:"General Knowledge",icon:"🌍",desc:"Everyday facts and discoveries",questions:[
+  ["Which is the largest planet in our solar system?",["Earth","Jupiter","Saturn","Mars"],1,"Jupiter is the largest planet in our solar system."],
+  ["What is the capital of Japan?",["Seoul","Beijing","Tokyo","Bangkok"],2,"Tokyo is the capital of Japan."],
+  ["How many continents are there?",["Five","Six","Seven","Eight"],2,"There are seven continents."],
+  ["Which is the largest ocean?",["Atlantic","Indian","Arctic","Pacific"],3,"The Pacific Ocean is the largest."],
+  ["Which animal is known as the Ship of the Desert?",["Horse","Camel","Elephant","Donkey"],1,"The camel is commonly called the Ship of the Desert."],
+  ["Which is the smallest prime number?",["0","1","2","3"],2,"Two is the smallest prime number and the only even prime."],
+  ["How many days are there in a leap year?",["364","365","366","367"],2,"A leap year has 366 days."],
+  ["Which gas do plants absorb from the atmosphere?",["Oxygen","Nitrogen","Carbon dioxide","Hydrogen"],2,"Plants absorb carbon dioxide during photosynthesis."],
+  ["Which is the fastest land animal?",["Lion","Cheetah","Tiger","Horse"],1,"The cheetah is the fastest land animal."],
+  ["What is the currency of the United Kingdom?",["Euro","Dollar","Pound sterling","Yen"],2,"The UK's currency is the pound sterling."]
+ ]},
+ {id:"science",name:"Science",icon:"🧪",desc:"Explore the world of science",questions:[
+  ["Which planet is known as the Red Planet?",["Venus","Mars","Mercury","Neptune"],1,"Mars looks reddish because of iron oxide on its surface."],
+  ["What is the chemical symbol for water?",["CO₂","O₂","H₂O","NaCl"],2,"Water's chemical formula is H₂O."],
+  ["Which organ pumps blood around the body?",["Lungs","Brain","Heart","Kidney"],2,"The heart pumps blood through the circulatory system."],
+  ["What force pulls objects toward Earth?",["Magnetism","Gravity","Friction","Electricity"],1,"Gravity attracts objects toward Earth's centre."],
+  ["Which part of a plant usually absorbs water?",["Leaf","Flower","Root","Stem"],2,"Roots absorb water and minerals from the soil."],
+  ["What is the boiling point of water at sea level?",["50°C","75°C","100°C","150°C"],2,"At standard atmospheric pressure, water boils at 100°C."],
+  ["Which gas is most abundant in Earth's atmosphere?",["Oxygen","Nitrogen","Carbon dioxide","Hydrogen"],1,"Nitrogen makes up about 78% of Earth's atmosphere."],
+  ["What is the centre of an atom called?",["Nucleus","Cell","Electron","Molecule"],0,"The nucleus is at the centre of an atom."],
+  ["Which vitamin can the body make with sunlight exposure?",["Vitamin A","Vitamin B12","Vitamin C","Vitamin D"],3,"Sunlight helps the skin produce vitamin D."],
+  ["What is the study of living things called?",["Geology","Biology","Astronomy","Physics"],1,"Biology is the study of life and living organisms."]
+ ]},
+ {id:"history",name:"History",icon:"🏛️",desc:"Past events and civilizations",questions:[
+  ["Who was the first Mughal emperor in India?",["Akbar","Babur","Humayun","Shah Jahan"],1,"Babur founded the Mughal Empire in India in 1526."],
+  ["In which year did India become independent?",["1942","1945","1947","1950"],2,"India became independent on 15 August 1947."],
+  ["Who is known for leading the Dandi March?",["Subhas Chandra Bose","Mahatma Gandhi","Jawaharlal Nehru","Sardar Patel"],1,"Mahatma Gandhi led the Salt March in 1930."],
+  ["The ancient city of Rome was located in which country?",["Greece","Italy","Egypt","Turkey"],1,"Ancient Rome was centred in present-day Italy."],
+  ["Who was the first President of the United States?",["Abraham Lincoln","Thomas Jefferson","George Washington","John Adams"],2,"George Washington served as the first US president."],
+  ["Which civilization built the pyramids at Giza?",["Roman","Ancient Egyptian","Mayan","Mesopotamian"],1,"The pyramids at Giza were built by ancient Egyptians."],
+  ["Who founded the Maurya Empire?",["Ashoka","Chandragupta Maurya","Bindusara","Harsha"],1,"Chandragupta Maurya founded the Maurya Empire."],
+  ["The French Revolution began in which year?",["1776","1789","1815","1848"],1,"The French Revolution began in 1789."],
+  ["Who was popularly known as the Iron Man of India?",["B. R. Ambedkar","Sardar Vallabhbhai Patel","Lal Bahadur Shastri","Bhagat Singh"],1,"Sardar Patel is popularly known as the Iron Man of India."],
+  ["Which ship sank in 1912 after hitting an iceberg?",["Lusitania","Titanic","Britannic","Queen Mary"],1,"The RMS Titanic sank in April 1912."]
+ ]},
+ {id:"geography",name:"Geography",icon:"🗺️",desc:"Places, landforms and our planet",questions:[
+  ["Which is the highest mountain above sea level?",["K2","Kangchenjunga","Mount Everest","Lhotse"],2,"Mount Everest is the world's highest mountain above sea level."],
+  ["Which is the largest hot desert?",["Gobi","Sahara","Kalahari","Arabian"],1,"The Sahara is the largest hot desert."],
+  ["Which river flows through Egypt?",["Amazon","Nile","Danube","Thames"],1,"The Nile flows north through Egypt."],
+  ["Which country has the largest land area?",["Canada","China","Russia","USA"],2,"Russia is the world's largest country by area."],
+  ["What is the capital of Australia?",["Sydney","Melbourne","Canberra","Perth"],2,"Canberra is Australia's capital."],
+  ["Which imaginary line divides Earth into Northern and Southern Hemispheres?",["Prime Meridian","Equator","Tropic of Cancer","Date Line"],1,"The Equator divides Earth into Northern and Southern Hemispheres."],
+  ["Which Indian state is known as the Land of Five Rivers?",["Rajasthan","Punjab","Gujarat","Haryana"],1,"Punjab is associated with the five rivers of the region."],
+  ["Which ocean lies between Africa and Australia?",["Atlantic","Pacific","Indian","Arctic"],2,"The Indian Ocean lies between Africa, Asia and Australia."],
+  ["What is the capital of Canada?",["Toronto","Vancouver","Ottawa","Montreal"],2,"Ottawa is the capital of Canada."],
+  ["Which layer of Earth is the outermost solid layer?",["Core","Mantle","Crust","Inner core"],2,"The crust is Earth's outermost solid layer."]
+ ]},
+ {id:"sports",name:"Sports",icon:"🏆",desc:"Games, players and tournaments",questions:[
+  ["How many players from one team are on the field in football (soccer)?",["9","10","11","12"],2,"A football team fields 11 players."],
+  ["Which sport uses a shuttlecock?",["Tennis","Badminton","Squash","Table tennis"],1,"Badminton is played with a shuttlecock."],
+  ["How many rings are on the Olympic symbol?",["Four","Five","Six","Seven"],1,"The Olympic symbol has five interlocking rings."],
+  ["Wimbledon is associated with which sport?",["Cricket","Tennis","Golf","Hockey"],1,"Wimbledon is a major tennis tournament."],
+  ["How many runs are scored for a boundary in cricket when the ball reaches the rope after bouncing?",["2","3","4","6"],2,"A boundary after the ball has bounced scores four runs."],
+  ["Which country hosted the first modern Olympic Games in 1896?",["France","Greece","Italy","UK"],1,"The first modern Olympics were held in Athens, Greece."],
+  ["The term 'checkmate' belongs to which game?",["Carrom","Chess","Polo","Bridge"],1,"Checkmate ends a chess game."],
+  ["How many points is a free throw worth in basketball?",["1","2","3","4"],0,"A successful free throw is worth one point."],
+  ["Which sport is associated with the Tour de France?",["Running","Cycling","Swimming","Skiing"],1,"The Tour de France is a famous cycling race."],
+  ["The Davis Cup is a team competition in which sport?",["Tennis","Football","Badminton","Golf"],0,"The Davis Cup is an international men's tennis team competition."]
+ ]},
+ {id:"computer",name:"Computer Knowledge",icon:"💻",desc:"Digital world and technology",questions:[
+  ["What does CPU stand for?",["Central Processing Unit","Computer Personal Unit","Central Program Utility","Core Power Unit"],0,"CPU stands for Central Processing Unit."],
+  ["Which of these is an input device?",["Monitor","Printer","Keyboard","Speaker"],2,"A keyboard is used to enter data."],
+  ["What does WWW stand for?",["World Wide Web","Web World Window","Wide World Wire","World Web Work"],0,"WWW stands for World Wide Web."],
+  ["Which company develops the Windows operating system?",["Apple","Microsoft","Google","IBM"],1,"Microsoft develops Windows."],
+  ["What is the binary number system based on?",["Base 2","Base 8","Base 10","Base 16"],0,"Binary uses two digits: 0 and 1."],
+  ["Which one is a web browser?",["Linux","Chrome","Python","Excel"],1,"Google Chrome is a web browser."],
+  ["What does URL stand for?",["Uniform Resource Locator","Universal Record Link","United Resource Line","Uniform Read Link"],0,"URL stands for Uniform Resource Locator."],
+  ["Which device is commonly used to connect a computer to a network wirelessly?",["Scanner","Wi-Fi adapter","Plotter","Microphone"],1,"A Wi-Fi adapter enables wireless network connectivity."],
+  ["Which of these is an example of an operating system?",["HTML","Android","JPEG","HTTP"],1,"Android is a mobile operating system."],
+  ["What is the main purpose of a computer's RAM?",["Long-term storage","Temporary working memory","Printing documents","Internet connection"],1,"RAM temporarily stores data and instructions in use."]
+ ]},
+ {id:"current",name:"Current Affairs",icon:"📰",desc:"General awareness and institutions",questions:[
+  ["Where is the headquarters of the United Nations?",["Geneva","New York City","Paris","London"],1,"The UN headquarters is in New York City."],
+  ["Which organization publishes the World Economic Outlook?",["World Bank","IMF","WHO","UNESCO"],1,"The International Monetary Fund publishes the World Economic Outlook."],
+  ["Where is the headquarters of the World Health Organization?",["Rome","Geneva","Vienna","Nairobi"],1,"WHO is headquartered in Geneva, Switzerland."],
+  ["Which Indian institution issues most currency notes in India?",["SBI","RBI","SEBI","NITI Aayog"],1,"The Reserve Bank of India issues banknotes, except the one-rupee note."],
+  ["What does ISRO stand for?",["Indian Space Research Organisation","International Satellite Research Office","Indian Science Rocket Office","Institute of Space and Radio Operations"],0,"ISRO stands for Indian Space Research Organisation."],
+  ["Which body conducts elections to the Lok Sabha in India?",["Supreme Court","Election Commission of India","Finance Commission","UPSC"],1,"The Election Commission of India conducts parliamentary elections."],
+  ["Where is the headquarters of UNESCO?",["Paris","New Delhi","Tokyo","Madrid"],0,"UNESCO is headquartered in Paris."],
+  ["Which Indian mission made a soft landing near the Moon's south polar region in 2023?",["Mangalyaan","Chandrayaan-2","Chandrayaan-3","Aditya-L1"],2,"Chandrayaan-3 achieved the landing in August 2023."],
+  ["Which day is celebrated as International Yoga Day?",["5 June","21 June","11 July","2 October"],1,"International Yoga Day is observed on 21 June."],
+  ["Which body is responsible for monetary policy in India?",["RBI","ISRO","CBSE","CAG"],0,"The Reserve Bank of India is responsible for monetary policy."]
+ ]},
+ {id:"india",name:"Indian GK",icon:"🇮🇳",desc:"India, culture and constitution",questions:[
+  ["What is the national animal of India?",["Lion","Bengal tiger","Elephant","Leopard"],1,"The Bengal tiger is India's national animal."],
+  ["What is the national aquatic animal of India?",["Blue whale","Ganges river dolphin","Sea turtle","Crocodile"],1,"The Ganges river dolphin is India's national aquatic animal."],
+  ["Who wrote India's national anthem?",["Bankim Chandra Chatterjee","Rabindranath Tagore","Sarojini Naidu","Muhammad Iqbal"],1,"Rabindranath Tagore wrote Jana Gana Mana."],
+  ["What is the capital of Rajasthan?",["Jodhpur","Udaipur","Jaipur","Kota"],2,"Jaipur is the capital of Rajasthan."],
+  ["Which is the largest Indian state by area?",["Madhya Pradesh","Maharashtra","Rajasthan","Uttar Pradesh"],2,"Rajasthan is India's largest state by area."],
+  ["How many spokes are there in the Ashoka Chakra?",["20","22","24","26"],2,"The Ashoka Chakra has 24 spokes."],
+  ["Which is the lower house of India's Parliament?",["Rajya Sabha","Lok Sabha","Vidhan Parishad","Gram Sabha"],1,"The Lok Sabha is the lower house of Parliament."],
+  ["Which Indian city is known as the Pink City?",["Jodhpur","Jaipur","Bikaner","Agra"],1,"Jaipur is popularly called the Pink City."],
+  ["What is the national flower of India?",["Rose","Lotus","Sunflower","Jasmine"],1,"The lotus is India's national flower."],
+  ["Which river is often called the Dakshin Ganga?",["Krishna","Godavari","Kaveri","Narmada"],1,"The Godavari is often called the Dakshin Ganga."]
+ ]}
+];
+
+// ---- Extra question pool (random 10 are picked per quiz) ----
+const QUIZ_SIZE=10;
+function shuffle(a){const r=[...a];for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]]}return r}
+const extraQuestions={
+ gk:[
+  ["Which planet is closest to the Sun?", ["Mercury", "Venus", "Earth", "Mars"], 0, "Mercury is the closest planet to the Sun."],
+  ["How many colours are there in a rainbow?", ["Five", "Six", "Seven", "Eight"], 2, "A rainbow is usually described as having seven colours."],
+  ["Which is the largest mammal in the world?", ["African elephant", "Giraffe", "Hippopotamus", "Blue whale"], 3, "The blue whale is the largest mammal and the largest animal known to have lived."],
+  ["What is the capital of France?", ["Lyon", "Paris", "Marseille", "Nice"], 1, "Paris is the capital of France."],
+  ["Which festival is known as the Festival of Lights?", ["Holi", "Eid", "Diwali", "Baisakhi"], 2, "Diwali is celebrated as the Festival of Lights."],
+  ["Which is the largest continent by area?", ["Africa", "Asia", "Europe", "North America"], 1, "Asia is the largest continent by area."],
+  ["How many sides does a hexagon have?", ["Five", "Seven", "Eight", "Six"], 3, "A hexagon has six sides."],
+  ["Which bird is well known for mimicking human speech?", ["Parrot", "Sparrow", "Eagle", "Pigeon"], 0, "Parrots can imitate human speech."],["Which gas makes up most of Earth's atmosphere?", ["Oxygen", "Nitrogen", "Argon", "Hydrogen"], 1, "Nitrogen makes up about 78% of the atmosphere."],["How many days are there in a week?", ["Five", "Six", "Seven", "Eight"], 2, "A week has seven days."],["The Great Red Spot is a giant storm on which planet?", ["Mars", "Jupiter", "Saturn", "Neptune"], 1, "The Great Red Spot is a giant storm on Jupiter."],["In which script is Hindi written?", ["Roman", "Devanagari", "Arabic", "Gurmukhi"], 1, "Hindi is written in the Devanagari script."]
+ ],
+ science:[
+  ["Which gas do humans inhale for respiration?", ["Carbon dioxide", "Helium", "Oxygen", "Nitrogen"], 2, "Humans need oxygen for respiration."],
+  ["What is the SI unit of electric current?", ["Volt", "Ampere", "Ohm", "Watt"], 1, "The ampere is the SI unit of electric current."],
+  ["Which is the hardest natural substance?", ["Gold", "Iron", "Quartz", "Diamond"], 3, "Diamond is the hardest naturally occurring substance."],
+  ["What is the SI unit of force?", ["Joule", "Newton", "Pascal", "Watt"], 1, "The newton is the SI unit of force."],
+  ["Which blood cells help the body fight infection?", ["Red blood cells", "Platelets", "White blood cells", "Plasma"], 2, "White blood cells are a key part of the immune system."],
+  ["About how long does sunlight take to reach Earth?", ["8 seconds", "8 minutes", "8 hours", "8 days"], 1, "Sunlight takes roughly 8 minutes to reach Earth."],
+  ["What is the process by which plants make food using sunlight?", ["Respiration", "Photosynthesis", "Digestion", "Transpiration"], 1, "Plants make food through photosynthesis."],
+  ["Which is the lightest chemical element?", ["Helium", "Oxygen", "Hydrogen", "Lithium"], 2, "Hydrogen is the lightest element."],["What is the chemical symbol of gold?", ["Go", "Gd", "Au", "Ag"], 2, "Gold's symbol is Au, from the Latin aurum."],["Which part of the cell contains genetic material?", ["Nucleus", "Membrane", "Cytoplasm", "Wall"], 0, "The nucleus holds the cell's DNA."],["Sound cannot travel through which of these?", ["Water", "Air", "Steel", "Vacuum"], 3, "Sound needs a medium, so it cannot travel through a vacuum."],["Which planet has prominent rings?", ["Mars", "Saturn", "Earth", "Mercury"], 1, "Saturn is famous for its rings."]
+ ],
+ history:[
+  ["Who was the first Prime Minister of India?", ["Sardar Patel", "Jawaharlal Nehru", "Rajendra Prasad", "Lal Bahadur Shastri"], 1, "Jawaharlal Nehru was independent India's first Prime Minister."],
+  ["The Battle of Plassey was fought in which year?", ["1757", "1764", "1857", "1699"], 0, "The Battle of Plassey took place in 1757."],
+  ["Who is traditionally credited with writing the Arthashastra?", ["Kalidasa", "Kautilya", "Banabhatta", "Vishakhadatta"], 1, "The Arthashastra is traditionally attributed to Kautilya (Chanakya)."],
+  ["Which Mughal emperor built the Taj Mahal?", ["Akbar", "Aurangzeb", "Shah Jahan", "Jahangir"], 2, "Shah Jahan built the Taj Mahal in memory of Mumtaz Mahal."],
+  ["The Revolt of 1857 began at which place?", ["Meerut", "Delhi", "Kanpur", "Jhansi"], 0, "The revolt began at Meerut in May 1857."],
+  ["Who gave the slogan 'Jai Jawan Jai Kisan'?", ["Jawaharlal Nehru", "Indira Gandhi", "Lal Bahadur Shastri", "Sardar Patel"], 2, "Lal Bahadur Shastri gave this slogan in 1965."],
+  ["World War II ended in which year?", ["1918", "1939", "1945", "1950"], 2, "World War II ended in 1945."],
+  ["Who was the first woman ruler of the Delhi Sultanate?", ["Razia Sultana", "Noor Jahan", "Chand Bibi", "Rani Lakshmibai"], 0, "Razia Sultana ruled Delhi from 1236 to 1240."],["Who built the Red Fort in Delhi?", ["Akbar", "Humayun", "Shah Jahan", "Babur"], 2, "Shah Jahan built the Red Fort."],["Who was the Governor-General at the time of India's independence?", ["Lord Mountbatten", "Lord Curzon", "Lord Dalhousie", "Lord Ripon"], 0, "Lord Mountbatten was the last Viceroy and first Governor-General of free India."],["Which ancient university was in Bihar?", ["Nalanda", "Taxila", "Ujjain", "Kashi"], 0, "Nalanda was a famous ancient university in Bihar."],["Who discovered the sea route to India in 1498?", ["Columbus", "Vasco da Gama", "Magellan", "Marco Polo"], 1, "Vasco da Gama reached Calicut in 1498."]
+ ],
+ geography:[
+  ["Which is the smallest continent by area?", ["Europe", "Antarctica", "Australia", "South America"], 2, "Australia (Oceania) is the smallest continent by area."],
+  ["On which continent is the Amazon rainforest mainly located?", ["Africa", "Asia", "South America", "Europe"], 2, "The Amazon rainforest is mainly in South America."],
+  ["Which strait separates Asia from North America?", ["Bering Strait", "Strait of Gibraltar", "Palk Strait", "Strait of Hormuz"], 0, "The Bering Strait lies between Russia (Asia) and Alaska (North America)."],
+  ["Which is the highest peak in the Alps?", ["Matterhorn", "Mont Blanc", "Eiger", "Mount Elbrus"], 1, "Mont Blanc is the highest peak in the Alps."],
+  ["Which country is known as the Land of the Rising Sun?", ["China", "Thailand", "Japan", "South Korea"], 2, "Japan is called the Land of the Rising Sun."],
+  ["The Great Barrier Reef lies off the coast of which country?", ["New Zealand", "Australia", "Indonesia", "Philippines"], 1, "The Great Barrier Reef is off Queensland, Australia."],
+  ["Which is the smallest country in the world by area?", ["Monaco", "Vatican City", "San Marino", "Liechtenstein"], 1, "Vatican City is the world's smallest country by area."],
+  ["Mount Kilimanjaro is located in which country?", ["Kenya", "Uganda", "Tanzania", "Ethiopia"], 2, "Mount Kilimanjaro is in Tanzania."],["Which is the largest island country in the world by area?", ["Indonesia", "Japan", "Philippines", "Sri Lanka"], 0, "Indonesia is the largest island country by area."],["Which river is the longest in India's peninsula?", ["Godavari", "Krishna", "Kaveri", "Mahanadi"], 0, "The Godavari is the longest peninsular river."],["Which desert is in Rajasthan?", ["Thar", "Gobi", "Sahara", "Kalahari"], 0, "The Thar Desert lies in Rajasthan."],["The Himalayas are what type of mountains?", ["Fold", "Block", "Volcanic", "Residual"], 0, "The Himalayas are young fold mountains."]
+ ],
+ sports:[
+  ["How many fielding players are on the field for a cricket team at one time?", ["9", "10", "11", "12"], 2, "The fielding side has 11 players, including the bowler and wicketkeeper."],
+  ["Which Indian cricketer is often called the 'God of Cricket'?", ["Virat Kohli", "Sachin Tendulkar", "MS Dhoni", "Kapil Dev"], 1, "Sachin Tendulkar is widely known by this nickname."],
+  ["In which sport is the term 'love' used for a zero score?", ["Badminton", "Tennis", "Golf", "Cricket"], 1, "In tennis, 'love' means zero."],
+  ["Which country won the first FIFA World Cup in 1930?", ["Brazil", "Argentina", "Uruguay", "Italy"], 2, "Uruguay won the first World Cup in 1930."],
+  ["What is the length of an Olympic-size swimming pool?", ["25 m", "50 m", "75 m", "100 m"], 1, "An Olympic pool is 50 metres long."],
+  ["Who captained India to the 1983 Cricket World Cup win?", ["Sunil Gavaskar", "Kapil Dev", "Sourav Ganguly", "Rahul Dravid"], 1, "Kapil Dev led India to the 1983 World Cup title."],
+  ["How many players of a kabaddi team are on the mat at a time?", ["5", "6", "7", "9"], 2, "Each kabaddi team has seven players on the mat."],
+  ["Neeraj Chopra is famous for which sport?", ["Javelin throw", "Shot put", "Discus throw", "Long jump"], 0, "Neeraj Chopra is an Olympic champion in javelin throw."],["Which country hosted the 2023 ODI Cricket World Cup?", ["India", "England", "Australia", "South Africa"], 0, "India hosted the 2023 ODI World Cup."],["How many players are in a basketball team on court?", ["4", "5", "6", "7"], 1, "Each basketball team has five players on court."],["The French Open at Roland Garros is a tournament in which sport?", ["Golf", "Tennis", "Cricket", "Hockey"], 1, "Roland Garros hosts the French Open tennis."],["Which is India's national sport traditionally called?", ["Hockey", "Cricket", "Kabaddi", "Football"], 0, "Hockey is widely regarded as India's traditional national sport."]
+ ],
+ computer:[
+  ["Which key deletes the character to the left of the cursor?", ["Delete", "Backspace", "Enter", "Shift"], 1, "Backspace deletes the character to the left of the cursor."],
+  ["What does HTML stand for?", ["HyperText Markup Language", "High Text Machine Language", "HyperTool Multi Language", "Home Text Markup Level"], 0, "HTML stands for HyperText Markup Language."],
+  ["Which of these is a programming language?", ["Windows", "Chrome", "Python", "Wi-Fi"], 2, "Python is a programming language."],
+  ["One byte is equal to how many bits?", ["4", "8", "16", "32"], 1, "One byte equals eight bits."],
+  ["Which shortcut is commonly used to copy selected text?", ["Ctrl + V", "Ctrl + X", "Ctrl + C", "Ctrl + Z"], 2, "Ctrl + C copies the selection."],
+  ["Which of these is an output device?", ["Mouse", "Scanner", "Monitor", "Keyboard"], 2, "A monitor displays output from the computer."],
+  ["What does PDF stand for?", ["Portable Document Format", "Printed Data File", "Personal Document Form", "Public Digital File"], 0, "PDF stands for Portable Document Format."],
+  ["Which of the following is a search engine?", ["Intel", "Google", "Oracle", "Linux"], 1, "Google is a web search engine."],["Which is the brain of the computer?", ["CPU", "Mouse", "Monitor", "Printer"], 0, "The CPU processes instructions."],["Which is an example of a web browser?", ["Firefox", "Python", "Linux", "Word"], 0, "Firefox is a web browser."],["What does SQL mainly work with?", ["Databases", "Images", "Audio", "Printers"], 0, "SQL is used to query databases."],["Ctrl + Z is commonly used to...", ["Undo", "Save", "Paste", "Print"], 0, "Ctrl + Z undoes the last action."]
+ ],
+ current:[
+  ["Where is the Parliament of India located?", ["Mumbai", "New Delhi", "Kolkata", "Hyderabad"], 1, "The Parliament of India is in New Delhi."],
+  ["What does GST stand for?", ["General Sales Tax", "Government Service Tax", "Goods and Services Tax", "Gross Sales Turnover"], 2, "GST stands for Goods and Services Tax."],
+  ["Which organisation manages the UPI payment system in India?", ["NPCI", "SEBI", "IRDAI", "NABARD"], 0, "The National Payments Corporation of India (NPCI) manages UPI."],
+  ["Which city hosted the G20 Leaders' Summit in 2023 under India's presidency?", ["Mumbai", "Bengaluru", "New Delhi", "Hyderabad"], 2, "The 2023 G20 Leaders' Summit was held in New Delhi."],
+  ["Which UN agency works mainly for children's rights and welfare?", ["UNESCO", "UNICEF", "WHO", "UNDP"], 1, "UNICEF works for children's rights and welfare."],
+  ["Which Indian space mission launched in 2023 to study the Sun?", ["Gaganyaan", "Chandrayaan-1", "Aditya-L1", "RISAT"], 2, "Aditya-L1 is India's first solar observatory mission."],
+  ["Which city hosted the 2024 Summer Olympics?", ["Tokyo", "Paris", "Los Angeles", "Sydney"], 1, "Paris hosted the 2024 Summer Olympics."],
+  ["What is the full form of NITI in NITI Aayog?", ["National Indian Trade Institute", "New India Technology Initiative", "National Investment and Trade Institute", "National Institution for Transforming India"], 3, "NITI stands for National Institution for Transforming India."],["Which military alliance has its headquarters in Brussels?", ["NATO", "UNICEF", "WHO", "IMF"], 0, "NATO's headquarters is in Brussels."],["What does GDP stand for?", ["Gross Domestic Product", "General Data Plan", "Gross Digital Profit", "Global Daily Price"], 0, "GDP means Gross Domestic Product."],["Which Indian initiative promotes digital services nationwide?", ["Digital India", "Make Wheels", "Swach Bank", "Sky India"], 0, "Digital India was launched in 2015."],["Which UN body maintains international peace and security?", ["Security Council", "UNESCO", "FAO", "ILO"], 0, "The UN Security Council is responsible for it."]
+ ],
+ india:[
+  ["Who is known as the Father of the Indian Constitution?", ["Mahatma Gandhi", "B. R. Ambedkar", "Jawaharlal Nehru", "Rajendra Prasad"], 1, "Dr B. R. Ambedkar chaired the Drafting Committee of the Constitution."],
+  ["Which Indian state has the longest coastline?", ["Tamil Nadu", "Andhra Pradesh", "Gujarat", "Maharashtra"], 2, "Gujarat has the longest coastline among Indian states."],
+  ["In which year did the Constitution of India come into effect?", ["1947", "1949", "1950", "1952"], 2, "The Constitution came into effect on 26 January 1950."],
+  ["Which Indian city is known as the City of Joy?", ["Mumbai", "Kolkata", "Chennai", "Lucknow"], 1, "Kolkata is popularly called the City of Joy."],
+  ["What is the national bird of India?", ["Peacock", "Parrot", "Sparrow", "Eagle"], 0, "The Indian peacock is the national bird."],
+  ["Which classical dance form originated in Kerala?", ["Kathak", "Bharatanatyam", "Kathakali", "Odissi"], 2, "Kathakali is a classical dance-drama from Kerala."],
+  ["Which is the smallest Indian state by area?", ["Sikkim", "Goa", "Tripura", "Mizoram"], 1, "Goa is the smallest Indian state by area."],
+  ["Who was the first President of India?", ["Dr. S. Radhakrishnan", "Dr. Rajendra Prasad", "Dr. Zakir Husain", "Jawaharlal Nehru"], 1, "Dr Rajendra Prasad was India's first President."],["Which is the national fruit of India?", ["Mango", "Apple", "Banana", "Guava"], 0, "The mango is India's national fruit."],["Which city is the capital of Maharashtra?", ["Pune", "Nagpur", "Mumbai", "Nashik"], 2, "Mumbai is Maharashtra's capital."],["Which festival marks the harvest in Tamil Nadu?", ["Pongal", "Onam", "Lohri", "Bihu"], 0, "Pongal is Tamil Nadu's harvest festival."],["Which Indian state is famous for backwaters?", ["Kerala", "Punjab", "Assam", "Bihar"], 0, "Kerala is famous for its backwaters."]
+ ],
+};
+categories.forEach(c=>{if(extraQuestions[c.id])c.questions.push(...extraQuestions[c.id])});
+
+let currentCategory=null, currentIndex=0, selectedAnswer=null, answers=[], timerInterval=null, secondsLeft=300, authMode="login", lastResult=null;
+const $=id=>document.getElementById(id);
+const historyKey="snovaQuizHistory";let cloudHistory=null;
+const esc=t=>String(t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function countUp(el,to){let n=0;const st=Math.max(1,Math.ceil(to/25)),t=setInterval(()=>{n=Math.min(to,n+st);el.textContent=n;if(n>=to)clearInterval(t)},30)}
+const uname=()=>{const u=window.snovaAuth?.user;return u?(u.user_metadata?.username||u.email.split("@")[0]).slice(0,30):""};
+async function loadCloud(){const a=window.snovaAuth;if(!a?.user||!a.client){cloudHistory=null;return}const{data}=await a.client.from("scores").select("*").eq("user_id",a.user.id).order("created_at",{ascending:false}).limit(50);cloudHistory=(data||[]).map(r=>({category:esc(r.category),score:r.score,correct:r.correct,total:r.total,date:r.created_at}));if($("dashboard-page").classList.contains("active"))renderDashboard()}
+async function syncScore(r){const a=window.snovaAuth;if(!a?.user||!a.client)return;const{error}=await a.client.from("scores").insert({username:uname(),category:r.category,category_id:r.categoryId,score:r.score,correct:r.correct,total:r.total});if(error)showToast("Score not synced: "+error.message);else loadCloud()}
+async function renderLeaderboard(){const a=window.snovaAuth;if(!a?.client)return;const{data}=await a.client.from("leaderboard").select("*").limit(20);if(!data||!data.length)return;const p=$("leader-list"),h=p.querySelector(".leader-head").outerHTML;p.innerHTML=h+data.map((r,i)=>`<div class="leader-row"><span class="rank">${String(i+1).padStart(2,"0")}</span><span>${esc(r.username)}</span><strong>${r.points}</strong></div>`).join("")}
+function showToast(message){const t=$("toast");t.textContent=message;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2600)}
+function go(page){document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));const target=$(page+"-page");if(target)target.classList.add("active");document.querySelectorAll(".nav-link").forEach(b=>b.classList.toggle("active",b.dataset.page===page));window.scrollTo({top:0,behavior:"smooth"});if(page==="dashboard")renderDashboard();if(page==="leaderboard")renderLeaderboard()}
+function categoryCard(c){return `<button class="category-card" data-category="${c.id}"><span class="category-icon">${c.icon}</span><strong>${c.name}</strong><small>${c.desc}</small></button>`}
+function renderCategories(){$("home-categories").innerHTML=categories.slice(0,4).map(categoryCard).join("");$("all-categories").innerHTML=categories.map(categoryCard).join("")}
+function getHistory(){if(cloudHistory)return cloudHistory;try{return JSON.parse(localStorage.getItem(historyKey)||"[]")}catch{return []}}
+function saveHistory(item){const h=getHistory();h.unshift(item);localStorage.setItem(historyKey,JSON.stringify(h.slice(0,50)))}
+function startQuiz(id){const base=categories.find(c=>c.id===id);if(!base)return;currentCategory={...base,questions:shuffle(base.questions).slice(0,QUIZ_SIZE)};currentIndex=0;answers=[];selectedAnswer=null;secondsLeft=300;$("quiz-category-label").textContent=currentCategory.name.toUpperCase();go("quiz");renderQuestion();clearInterval(timerInterval);timerInterval=setInterval(()=>{secondsLeft--;$("timer").textContent=`${String(Math.floor(secondsLeft/60)).padStart(2,"0")}:${String(secondsLeft%60).padStart(2,"0")}`;if(secondsLeft<=0)finishQuiz()},1000)}
+function renderQuestion(){const q=currentCategory.questions[currentIndex];selectedAnswer=null;$("question-number").textContent=`QUESTION ${currentIndex+1} OF ${currentCategory.questions.length}`;$("question-points").textContent="10 POINTS";$("question-text").textContent=q[0];$("progress-fill").style.width=`${(currentIndex/currentCategory.questions.length)*100}%`;$("answered-count").textContent="Choose one answer";$("next-question").disabled=true;$("next-question").textContent=currentIndex===currentCategory.questions.length-1?"Finish quiz ✓":"Next question →";$("answer-options").innerHTML=q[1].map((a,i)=>`<button class="answer-option" data-answer="${i}"><span class="option-letter">${"ABCD"[i]}</span>${a}</button>`).join("")}
+function chooseAnswer(i){selectedAnswer=i;document.querySelectorAll(".answer-option").forEach((b,n)=>b.classList.toggle("selected",n===i));$("next-question").disabled=false;$("answered-count").textContent="Answer selected"}
+function nextQuestion(){if(selectedAnswer===null)return;answers[currentIndex]=selectedAnswer;currentIndex++;if(currentIndex>=currentCategory.questions.length)finishQuiz();else renderQuestion()}
+function finishQuiz(){clearInterval(timerInterval);if(!currentCategory)return;const qs=currentCategory.questions;let correct=0;qs.forEach((q,i)=>{if(answers[i]===q[2])correct++});const score=correct*10;lastResult={category:currentCategory.name,categoryId:currentCategory.id,score,correct,total:qs.length,date:new Date().toISOString(),answers:[...answers]};saveHistory(lastResult);syncScore(lastResult);countUp($("result-score"),score);$("correct-count").textContent=correct;$("wrong-count").textContent=qs.length-correct;$("accuracy").textContent=Math.round(correct/qs.length*100)+"%";$("result-title").textContent=score>=80?"Excellent work!":score>=50?"Good effort!":"Keep learning!";$("result-subtitle").textContent=`You completed ${currentCategory.name}. Every attempt helps you improve.`;document.querySelector(".score-ring").style.setProperty("--score",score+"%");$("answer-review").innerHTML=qs.map((q,i)=>`<div class="review-item"><strong>${i+1}. ${q[0]}</strong><p class="${answers[i]===q[2]?"good":"bad"}">${answers[i]===q[2]?"✓ Correct":"✕ Your answer: "+(answers[i]===undefined?"Not answered":q[1][answers[i]])}</p><p>Correct answer: <b>${q[1][q[2]]}</b> — ${q[3]}</p></div>`).join("");go("result")}
+function renderDashboard(){const h=getHistory(),total=h.length,points=h.reduce((s,x)=>s+x.score,0),correct=h.reduce((s,x)=>s+x.correct,0),questions=h.reduce((s,x)=>s+x.total,0);$("dash-quizzes").textContent=total;$("dash-points").textContent=points;$("dash-accuracy").textContent=questions?Math.round(correct/questions*100)+"%":"0%";$("history-list").innerHTML=h.length?h.slice(0,12).map(x=>`<div class="history-item"><div><strong>${x.category}</strong><br><small>${new Date(x.date).toLocaleDateString()}</small></div><strong>${x.score}/100</strong></div>`).join(""):'<div class="empty-state">No quizzes yet. Pick a category and play your first quiz!</div>'}
+function openAuth(mode="login"){$("auth-modal").classList.remove("hidden");setAuthMode(mode);$("auth-message").textContent=window.snovaAuth?.ready?"Use your account details to continue.":"Guest quiz is available now. Configure Supabase to enable accounts."}
+function closeAuth(){$("auth-modal").classList.add("hidden")}
+function setAuthMode(mode){authMode=mode;$("login-tab").classList.toggle("active",mode==="login");$("signup-tab").classList.toggle("active",mode==="signup");$("auth-title").textContent=mode==="login"?"Welcome back":"Create your account";$("auth-description").textContent=mode==="login"?"Log in to keep your progress connected.":"Sign up to get started with SNOVA."; $("auth-submit").textContent=mode==="login"?"Login":"Create account";$("auth-message").textContent="";$("username-wrap").classList.toggle("hidden",mode!=="signup")}
+function updateAuthUI(){const user=window.snovaAuth?.user;$("user-label").textContent=user?.email||"Guest mode";$("auth-open").classList.toggle("hidden",!!user);$("logout-btn").classList.toggle("hidden",!user)}
+async function submitAuth(e){e.preventDefault();const email=$("auth-email").value.trim(),password=$("auth-password").value;$("auth-submit").disabled=true;$("auth-message").textContent="Please wait…";try{if(!window.snovaAuth?.ready)throw new Error("Supabase is not configured yet. Open config.js and add your Project URL and Publishable key. You can still use Guest mode.");if(authMode==="signup"){await window.snovaAuth.signUp(email,password,$("auth-username").value.trim().slice(0,30));$("auth-message").textContent="Account created. Check your email if confirmation is enabled."}else{await window.snovaAuth.signIn(email,password);closeAuth();showToast("Login successful")}updateAuthUI()}catch(err){$("auth-message").textContent=err.message||"Something went wrong."}finally{$("auth-submit").disabled=false}}
+document.addEventListener("click",e=>{const page=e.target.closest("[data-page]");if(page){e.preventDefault();go(page.dataset.page)}const cat=e.target.closest("[data-category]");if(cat)startQuiz(cat.dataset.category);const opt=e.target.closest("[data-answer]");if(opt)chooseAnswer(Number(opt.dataset.answer));if(e.target.closest("[data-close-modal]"))closeAuth()});
+$("next-question").addEventListener("click",nextQuestion);$("quit-quiz").addEventListener("click",()=>{if(confirm("Exit this quiz? Your current attempt will not be saved.")){clearInterval(timerInterval);currentCategory=null;go("categories")}});$("retry-quiz").addEventListener("click",()=>lastResult&&startQuiz(lastResult.categoryId));$("auth-open").addEventListener("click",()=>openAuth());$("logout-btn").addEventListener("click",async()=>{try{await window.snovaAuth.signOut();updateAuthUI();showToast("Logged out")}catch(e){showToast(e.message)}});$("login-tab").addEventListener("click",()=>setAuthMode("login"));$("signup-tab").addEventListener("click",()=>setAuthMode("signup"));$("auth-form").addEventListener("submit",submitAuth);window.addEventListener("snova-auth-change",()=>{updateAuthUI();loadCloud()});$("year").textContent=new Date().getFullYear();renderCategories();updateAuthUI();setTimeout(loadCloud,1200);
+
+</script>
+</body>
+</html>
